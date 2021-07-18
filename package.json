@@ -4,11 +4,12 @@
   "description": "start project with typescript (server edition)",
   "main": "dist/app/server.js",
   "scripts": {
-    "build": "rm dist -Rf && tsc  -b && cp ./package.json ./dist/package.json",
+    "build": "rm dist -Rf && tsc  -b && cp ./package.json ./dist/package.json && cp ./.env ./dist/.env && cp ./.env.example ./dist/.env.example",
     "dev": "nodemon --watch src --watch ./public --exec 'ts-node src/server.ts' -e ts,js,njk,html,css,json",
     "build:fast": "rm dist -Rf && sucrase ./src -d ./dist --transforms typescript,imports && cp ./package.json ./dist/package.json",
     "dev:fast": "nodemon --watch src --watch public --exec 'sucrase-node app/src/server.ts' -e ts,js,njk,html,css,json",
-    "rebuild-locks": "rm node_modules -Rf && npm i && rm node_modules -Rf && yarn install"
+    "rebuild-locks": "rm node_modules -Rf && npm i && rm node_modules -Rf && yarn install",
+    "rebuild-env": "rm .env -Rf && cp .env.example .env"
   },
   "repository": {
     "type": "git",
@@ -20,9 +21,19 @@
     "url": "https://github.com/dexmendonca/type_start_server/issues"
   },
   "homepage": "https://github.com/dexmendonca/type_start_server#readme",
+  "dependencies": {
+    "dotenv-safe": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.95.7",
+    "pg": "^8.6.0"
+  },
   "devDependencies": {
+    "@types/dotenv-safe": "^8.1.2",
     "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.4",
     "@types/node": "^16.3.3",
+    "@types/pg": "^8.6.1",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
     "@typescript-eslint/parser": "^4.28.3",
     "eslint": "^7.30.0",
@@ -38,8 +49,5 @@
     "sucrase": "^3.20.0",
     "ts-node": "^10.1.0",
     "typescript": "^4.3.5"
-  },
-  "dependencies": {
-    "express": "^4.17.1"
   }
 }
