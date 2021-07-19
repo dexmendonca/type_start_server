@@ -16,8 +16,8 @@ const knexConfig: KnexConfig = {
 			password: process.env.DEV_DATABASE_PASSWORD
 		},
 		pool: {
-			min: process.env.DEV_DATABASE_POOL_MIN,
-			max: process.env.DEV_DATABASE_POOL_MAX
+			min: parseInt(process.env.DEV_DATABASE_POOL_MIN),
+			max: parseInt(process.env.DEV_DATABASE_POOL_MAX)
 		}
 	},
 	staging: {
@@ -30,8 +30,8 @@ const knexConfig: KnexConfig = {
 			password: process.env.STA_DATABASE_PASSWORD
 		},
 		pool: {
-			min: process.env.STA_DATABASE_POOL_MIN,
-			max: process.env.STA_DATABASE_POOL_MAX
+			min: parseInt(process.env.STA_DATABASE_POOL_MIN),
+			max: parseInt(process.env.STA_DATABASE_POOL_MAX)
 		}
 	},
 	production: {
@@ -44,8 +44,8 @@ const knexConfig: KnexConfig = {
 			password: process.env.PRD_DATABASE_PASSWORD
 		},
 		pool: {
-			min: process.env.PRD_DATABASE_POOL_MIN,
-			max: process.env.PRD_DATABASE_POOL_MAX
+			min: parseInt(process.env.PRD_DATABASE_POOL_MIN),
+			max: parseInt(process.env.PRD_DATABASE_POOL_MAX)
 		}
 	}
 };
