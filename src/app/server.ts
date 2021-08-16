@@ -1,14 +1,20 @@
 import dotenvSafe from 'dotenv-safe';
-import express from 'express';
-
-import routes from './routes/_routes';
+import dayjs from 'dayjs';
+import app from './app';
+import preBootScript from './scripts/preBoot';
 
 dotenvSafe.config();
-const app = express();
-
-app.use('/', routes);
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
-	console.log(`Test Running in port ${port}`);
-});
+const main = async () => {
+	console.log('🎛️    Servidor  🖥️');
+	console.log('==================');
+	await preBootScript.run();
+
+	await app.listen(port);
+
+	console.log(`port: ${port}`);
+	console.log(`online since: ${dayjs().format('DD/MM/YYYY HH:mm:ss [TZ] Z')}`);
+};
+
+main();
